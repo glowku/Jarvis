@@ -56,5 +56,3 @@ make run
 
 ---
 
-
-**Veux-tu que je t'aide à coder le "Cerveau" du compilateur maintenant ?** On pourrait commencer par créer un petit script Python ou C qui prend une structure simple (tes fibres) et la transforme en un fichier `.h` ou `.bin` que ton Kernel Jarvis peut lire au boot.
