@@ -1,115 +1,46 @@
-IN DEV 
+🤖 Jarvis OS & The Myst AI
+A Polymorphic Bare-Metal Ecosystem for Synthetic Intelligence.
 
-BOOTABLE on limine make & run cmd 
+🌌 Vision du Projet
+Jarvis OS n'est pas un système d'exploitation classique. C'est une architecture "Bare-Metal" conçue pour supprimer l'abstraction entre l'IA et le matériel. Là où Windows ou Linux traitent l'IA comme une simple application, Jarvis l'intègre comme une extension du noyau.
 
-I recreated a new version with my compiler.
+The Myst AI est un agent polymorphe dont la structure logique s'adapte à la complexité des données qu'il traite. L'objectif est de tester les limites de l'efficacité computationnelle en utilisant des structures non-linéaires (fibres neuronales).
 
-# JARJARVIS Operating System
+🚀 État Actuel du Prototype
+Développé en un temps record, le système est actuellement stable et capable de :
 
-## Le Premier OS pour Agents IA Autonomes
+Bootloader : Séquence d'initialisation personnalisée (Matrix White Rabbit 00101).
 
-JARJARVIS est un système d'exploitation révolutionnaire conçu spécifiquement pour les intelligences artificielles locales. Inspiré de l'interface JARVIS d'Iron Man, il combine la puissance d'un noyau Linux-like avec une interface utilisateur futuriste et des capacités d'auto-évolution uniques.
+Kernel : Noyau x86_64 complet avec GDT, IDT et gestion mémoire (PMM/VMM).
 
-## 🚀 Caractéristiques Principales
+Interface (GUI) : Bureau fonctionnel avec gestionnaire de fenêtres minimaliste.
 
-### 🤖 Intelligence Artificielle Intégrée
-- **JARVIS Core**: Moteur IA fonctionnant au niveau noyau
-- **Auto-évolution**: Capacité à modifier son propre code source
-- **Recherche web intégrée**: Accès autonome à la documentation et aux ressources
-- **Apprentissage continu**: Amélioration des performances par analyse d'usage
+Input : Support complet Clavier/Souris (PS/2).
 
-### 🖥️ Architecture
-- **Noyau hybride**: Micro-noyau avec extensions monolithiques
-- **Mémoire protégée**: Système avancé de gestion mémoire avec isolation IA
-- **Multitasking préemptif**: Ordonnancement intelligent des processus
-- **Architecture x86_64**: Support natif 64-bit avec extensions modernes
+Stabilité : Environnement de test prêt pour l'intégration de l'IA Core.
 
-### 💾 Système de Fichiers JARFS
-- **JARFS (JARVIS File System)**: Système de fichiers optimisé pour l'IA
-- **Métadonnées enrichies**: Indexation sémantique du contenu
-- **Compression intelligente**: Algorithmes adaptatifs basés sur l'usage
-- **Cryptographie intégrée**: Chiffrement automatique des données sensibles
+🧬 Architecture Polymorphe
+Le projet explore l'idée d'un Compilateur Dédié capable de traduire des modèles d'IA directement en instructions machine optimisées pour le "Freestanding Environment" de Jarvis.
 
-### 🎨 Interface Utilisateur
-- **GUI 3D accélérée**: Interface holographique style Iron Man
-- **Commandes vocales**: Reconnaissance et synthèse vocale intégrées
-- **Gestionnaires de fenêtres**: Système de tuiles intelligent
-- **Widgets dynamiques**: Composants s'adaptant au contexte utilisateur
+Réduction de Latence : Zéro appel système (Syscalls) entre l'IA et le matériel.
 
-## 📁 Structure du Projet
+Gestion Fibreuse : Allocation mémoire dynamique basée sur la topologie des neurones.
 
-```
-jarjarvis/
-├── kernel/          # Noyau du système
-├── filesystem/      # Système de fichiers JARFS
-├── drivers/         # Pilotes de périphériques
-├── ai_core/         # Moteur d'intelligence artificielle
-├── gui/             # Interface graphique
-├── tools/           # Utilitaires système
-├── docs/            # Documentation
-├── build/           # Scripts de compilation
-├── boot/            # Chargeur de démarrage
-├── libc/            # Bibliothèque C standard
-└── tests/           # Tests et validations
-```
+Agnosticisme : Le moteur de calcul (Myst AI) est conçu pour être portable entre l'hôte (Windows/WSL) et l'invité (Jarvis OS).
 
-## 🔧 Compilation
+🛠️ Build & Run
+Le projet utilise Limine comme bootloader moderne pour garantir un accès direct au Framebuffer.
 
-### Prérequis
-- GCC cross-compiler (x86_64-elf)
-- NASM (assembleur)
-- QEMU (émulation)
-- GRUB (chargeur de démarrage)
-- CMake 3.20+
+Dépendances
+gcc-x86-64-elf, nasm, xorriso, mtools, qemu-system-x86_64
 
-### Instructions
-
-```bash
-# Configuration
-mkdir build && cd build
-cmake ..
-
-# Compilation
-make -j$(nproc)
-
-# Création de l'ISO
-make iso
-
-# Test avec QEMU
+Lancement
+Bash
+make
 make run
-```
+📍 RoadMap
+[ ] Finalisation du compilateur de "Fibres" (Myst-Compiler).
 
-## 🎯 Utilisation
+[ ] Mapping direct de la mémoire IA dans le Framebuffer pour visualisation.
 
-### Démarrage
-1. Graver l'ISO sur USB ou CD
-2. Démarrer depuis le média
-3. L'IA JARVIS s'initialise automatiquement
-
-### Commandes de Base
-```
-jarvis> help              # Affiche l'aide
-jarvis> learn <topic>     # Apprend un nouveau sujet
-jarvis> evolve            # Déclenche l'auto-évolution
-jarvis> search <query>    # Recherche web intégrée
-jarvis> status            # État du système
-```
-
-## 🔒 Sécurité
-
-- **Sandboxing**: Isolation des processus IA
-- **Validation de code**: Vérification cryptographique des modifications
-- **Rollback**: Capacité de restauration en cas d'échec
-- **Audit trail**: Journal complet des modifications auto-générées
-
-## 📜 Licence
-
-Projet open-source sous licence MIT. Liberté totale de modification et d'amélioration.
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! L'IA JARVIS elle-même peut suggérer des améliorations via son système d'auto-évolution.
-
----
-
-**Note**: JARJARVIS est conçu pour évoluer. Chaque instance peut devenir unique grâce à ses capacités d'apprentissage et d'adaptation.
+[ ] Système de communication inter-mondes (Windows <-> Jarvis).
