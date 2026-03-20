@@ -1,3 +1,9 @@
+IN DEV 
+
+BOOTABLE on limine make & run cmd 
+
+I recreated a new version with my compiler.
+
 # JARJARVIS Operating System
 
 ## Le Premier OS pour Agents IA Autonomes
