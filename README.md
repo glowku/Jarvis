@@ -10,7 +10,7 @@
 ## 🌌 Vision du Projet
 **Jarvis OS** n'est pas un système d'exploitation classique. C'est une architecture "Bare-Metal" conçue pour supprimer l'abstraction entre l'IA et le matériel. Là où Windows ou Linux traitent l'IA comme une simple application, Jarvis l'intègre comme une **extension du noyau**.
 
-**The Myst AI** est un agent polymorphe dont la structure logique s'adapte à la complexité des données qu'il traite. L'objectif est de tester les limites de l'efficacité computationnelle en utilisant des structures non-linéaires (fibres neuronales).
+**The Myst AI** (voir autre dépot git) est un agent polymorphe dont la structure logique s'adapte à la complexité des données qu'il traite. L'objectif est de tester les limites de l'efficacité computationnelle en utilisant des structures non-linéaires (fibres neuronales).
 
 ---
 
