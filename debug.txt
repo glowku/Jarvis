@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# 1. Nettoyage et préparation des dossiers
+echo "--- Nettoyage ---"
+cd ~/Jarvis
+make clean
+rm -rf iso_root
+mkdir -p iso_root/boot/limine
+
+# 2. Compilation du Kernel
+echo "--- Compilation ---"
+make
+if [ ! -f "jarvis.elf" ]; then
+    echo "Erreur de compilation : jarvis.elf non généré !"
+    exit 1
+fi
+
+# 3. Préparation des fichiers Limine (depuis l'ancien dossier)
+echo "--- Préparation Limine ---"
+cp ~/JarJar/limine/limine-bios.sys iso_root/boot/limine/
+cp ~/JarJar/limine/limine-bios-cd.bin iso_root/boot/limine/
+cp ~/JarJar/limine/limine-uefi-cd.bin iso_root/boot/limine/
+
+# 4. Création du fichier de config
+cat << 'EOF' > iso_root/boot/limine.conf
+TIMEOUT=3
+VERBOSE=yes
+
+:JARVIS OS
+    PROTOCOL=limine
+    KERNEL_PATH=boot:///boot/jarvis.elf
+    MODULE_PATH=boot:///boot/animation.bin
+    RESOLUTION=1920x1080x32
+EOF
+
+# 5. Copie du Kernel et de l'animation vers l'ISO
+cp jarvis.elf iso_root/boot/
+if [ -f /mnt/c/Users/slash/Downloads/VM/p/jarvis/iso_root/animation.bin ]; then
+    cp /mnt/c/Users/slash/Downloads/VM/p/jarvis/iso_root/animation.bin iso_root/boot/
+    echo "[+] Animation.bin ajouté."
+else
+    echo "[!] Attention : animation.bin introuvable."
+fi
+
+# 6. Création de l'ISO
+echo "--- Création de l'ISO ---"
+xorriso -as mkisofs -b boot/limine/limine-bios-cd.bin \
+    -no-emul-boot -boot-load-size 4 -boot-info-table \
+    iso_root -o jarvis.iso 2>/dev/null
+
+# 7. Installation de Limine dans l'ISO
+~/JarJar/limine/limine bios-install jarvis.iso
+
+# 8. Lancement QEMU
+echo "--- Lancement QEMU ---"
+# Ajout de -cpu max pour le support des pages 1GiB et -serial stdio pour les logs
+qemu-system-x86_64 -cdrom jarvis.iso -m 512M -serial stdio -cpu max
+
+#ou
+./launch.sh
+qemu-system-x86_64 -cdrom jarvis.iso -m 512M -serial stdio -d int,cpu_reset -no-reboot
+
+
+VS CODE LOCAL LINK
+
+/mnt/c/Users/${USER}/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code .
+
